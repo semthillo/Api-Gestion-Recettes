@@ -90,6 +90,14 @@ const deleteRequestCategoryValidatore = [
         throw new Error('Category not found!');
       }
       return true;
+    })
+    .bail()
+    .custom(async (value) => {
+      const result = await CategoryModel.checkRecipeById(value);
+      if (result) {
+        throw new Error('Cannot delete this category because it\'s used in recipes!');
+      }
+      return true;
     }),
   (req, res, next) => {
     const errors = validationResult(req);

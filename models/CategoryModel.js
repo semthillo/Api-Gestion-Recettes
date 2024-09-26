@@ -22,6 +22,17 @@ class CategoryModel {
       throw error;
     }
   }
+  static async checkRecipeById(id) {
+    try {
+      const [results] = await db.query(
+        'SELECT * FROM recipes WHERE category_id = ?',
+        [id]
+      );
+      return results.length>0;
+    } catch (error) {
+      throw error;
+    }
+  }
   static async getCategoryById(id) {
     try {
       const [results] = await db.query(

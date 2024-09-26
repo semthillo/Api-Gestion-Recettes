@@ -26,7 +26,7 @@ class CategoryController {
       await CategoryModel.createCategories(name);
       res.status(200).send('Category is created successfuly');
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
     next();
   }
@@ -36,7 +36,7 @@ class CategoryController {
       await CategoryModel.deleteCategories(id);
       res.status(200).send('Category is deleted successfuly');
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
     next();
   }
@@ -47,7 +47,7 @@ class CategoryController {
       await CategoryModel.updateCategories(id, name);
       res.status(200).send('Category is updated successfuly');
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
     next();
   }
