@@ -22,7 +22,7 @@ const addRequestValidatore = [
       }
       return true;
     }),
-  check('ingredient')
+  check('ingredients')
     .not()
     .isEmpty()
     .withMessage('Ingredient is required!')
@@ -50,6 +50,22 @@ const addRequestValidatore = [
       const validTypes = ['plat', 'desert', 'entry'];
       if (!validTypes.includes(value.toLowerCase())) {
         throw new Error('Type recipe must be "plat", "desert", or "entry"!');
+      }
+      return true;
+    })
+    .bail(),
+  check('category_id')
+    .not()
+    .isEmpty()
+    .withMessage('Id is required!')
+    .bail()
+    .isInt()
+    .withMessage('Id must be number!')
+    .bail()
+    .custom(async (value) => {
+      const result = await RecipeModel.checkCategoryById(value);
+      if (result == 0) {
+        throw new Error('Category with this id not found!');
       }
       return true;
     }),
@@ -96,7 +112,7 @@ const updateRequestValidatore = [
       }
       return true;
     }),
-  check('ingredient')
+  check('ingredients')
     .not()
     .isEmpty()
     .withMessage('Ingredient is required!')
@@ -124,6 +140,21 @@ const updateRequestValidatore = [
       const validTypes = ['plat', 'desert', 'entry'];
       if (!validTypes.includes(value.toLowerCase())) {
         throw new Error('Type recipe must be "plat", "desert", or "entry"!');
+      }
+      return true;
+    })
+    .bail(),
+  check('category_id')
+    .not()
+    .isEmpty()
+    .withMessage('Id is required!')
+    .bail()
+    .isInt()
+    .withMessage('Id must be number!')
+    .custom(async (value) => {
+      const result = await RecipeModel.checkCategoryById(value);
+      if (result == 0) {
+        throw new Error('Category with this id not found!');
       }
       return true;
     }),

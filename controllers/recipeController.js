@@ -6,7 +6,7 @@ class RecipeController {
       const result = await RecipeModel.getAllRecipes();
       res.status(200).json(result);
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
   }
   static async getRecipeById(req, res) {
@@ -15,17 +15,17 @@ class RecipeController {
       const result = await RecipeModel.getRecipeById(id);
       res.status(200).json(result);
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
   }
 
   static async createRecipes(req, res, next) {
     try {
-      const { title, ingredient, type } = req.body;
-      await RecipeModel.createRecipes(title, ingredient, type);
+      const { title, ingredients, type, category_id } = req.body;
+      await RecipeModel.createRecipes(title, ingredients, type, category_id);
       res.status(200).send('Recipe is created successfuly');
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
     next();
   }
@@ -35,18 +35,19 @@ class RecipeController {
       await RecipeModel.deleteRecipes(id);
       res.status(200).send('Recipe is deleted successfuly');
     } catch (error) {
-      throw error;
+      console.log(error.message);
+      
     }
     next();
   }
   static async updateRecipes(req, res, next) {
     try {
       const { id } = req.params;
-      const { title, ingredient, type } = req.body;
-      await RecipeModel.updateRecipes(id, title, ingredient, type);
+      const { title, ingredients, type, category_id } = req.body;
+      await RecipeModel.updateRecipes(id, title, ingredients, type, category_id);
       res.status(200).send('Recipe is updated successfuly');
     } catch (error) {
-      throw error;
+      console.log(error.message);
     }
     next();
   }

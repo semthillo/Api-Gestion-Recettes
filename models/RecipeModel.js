@@ -21,6 +21,16 @@ class RecipeModel {
       throw error;
     }
   }
+  static async checkCategoryById(id) {
+    try {
+      const [results] = await db.query('SELECT * FROM categories WHERE id = ?', [
+        id,
+      ]);
+      return results.length;
+    } catch (error) {
+      throw error;
+    }
+  }
   static async getRecipeById(id) {
     try {
       const [results] = await db.query('SELECT * FROM recipes WHERE id = ?', [
@@ -40,11 +50,11 @@ class RecipeModel {
       throw error;
     }
   }
-  static async createRecipes(title, ingredient, type) {
+  static async createRecipes(title, ingredients, type, category_id) {
     try {
       const [result] = await db.query(
-        'INSERT INTO recipes(title, ingredient, type) VALUES (?, ?, ?)',
-        [title, ingredient, type]
+        'INSERT INTO recipes(title, ingredients, type, category_id) VALUES (?, ?, ?, ?)',
+        [title, ingredients, type, category_id]
       );
       return result.insertId;
     } catch (error) {
@@ -60,11 +70,11 @@ class RecipeModel {
     }
   }
 
-  static async updateRecipes(id, title, ingredient, type) {
+  static async updateRecipes(id, title, ingredients, type, category_id) {
     try {
       const [result] = await db.query(
-        'UPDATE recipes SET title=?, ingredient=?, type=? WHERE id=?',
-        [title, ingredient, type, id]
+        'UPDATE recipes SET title=?, ingredients=?, type=?, category_id=?  WHERE id=?',
+        [title, ingredients, type, category_id, id]
       );
 
       return result.affectedRows;
