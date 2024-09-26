@@ -22,7 +22,7 @@ class CategoryController {
 
   static async createCategories(req, res, next) {
     try {
-      const { name} = req.body;
+      const { name } = req.body;
       await CategoryModel.createCategories(name);
       res.status(200).send('Category is created successfuly');
     } catch (error) {
@@ -43,7 +43,7 @@ class CategoryController {
   static async updateCategories(req, res, next) {
     try {
       const { id } = req.params;
-      const { name} = req.body;
+      const { name } = req.body;
       await CategoryModel.updateCategories(id, name);
       res.status(200).send('Category is updated successfuly');
     } catch (error) {

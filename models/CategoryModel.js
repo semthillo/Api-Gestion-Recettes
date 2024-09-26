@@ -13,9 +13,10 @@ class CategoryModel {
   }
   static async checkCategoryById(id) {
     try {
-      const [results] = await db.query('SELECT * FROM categories WHERE id = ?', [
-        id,
-      ]);
+      const [results] = await db.query(
+        'SELECT * FROM categories WHERE id = ?',
+        [id]
+      );
       return results.length;
     } catch (error) {
       throw error;
@@ -23,9 +24,10 @@ class CategoryModel {
   }
   static async getCategoryById(id) {
     try {
-      const [results] = await db.query('SELECT * FROM categories WHERE id = ?', [
-        id,
-      ]);
+      const [results] = await db.query(
+        'SELECT * FROM categories WHERE id = ?',
+        [id]
+      );
       return results;
     } catch (error) {
       throw error;
@@ -53,7 +55,9 @@ class CategoryModel {
   }
   static async deleteCategories(id) {
     try {
-      const [result] = await db.query('DELETE FROM categories WHERE id =?', [id]);
+      const [result] = await db.query('DELETE FROM categories WHERE id =?', [
+        id,
+      ]);
       return result.affectedRows;
     } catch (error) {
       throw error;

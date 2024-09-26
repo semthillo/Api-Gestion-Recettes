@@ -23,9 +23,10 @@ class RecipeModel {
   }
   static async checkCategoryById(id) {
     try {
-      const [results] = await db.query('SELECT * FROM categories WHERE id = ?', [
-        id,
-      ]);
+      const [results] = await db.query(
+        'SELECT * FROM categories WHERE id = ?',
+        [id]
+      );
       return results.length;
     } catch (error) {
       throw error;
