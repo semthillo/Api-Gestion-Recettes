@@ -7,19 +7,20 @@ import express from 'express';
 // } from '../middlewares/validatorRecipe.js';
 // import RecipeController from '../controllers/recipeController.js';
 import CategoryController from '../controllers/CategoryController.js';
+import { addRequestCategoryValidatore, deleteRequestCategoryValidatore, updateRequestCategoryValidatore } from '../middlewares/validatorCategory.js';
 
 // const app = express()
 const Categoryrouter = express.Router();
 
 Categoryrouter.get('/categories', CategoryController.getAllCategories);
-Categoryrouter.get('/categories/:id', CategoryController.getCategoryById);
-Categoryrouter.post('/categories', CategoryController.createCategories);
+Categoryrouter.get('/categories/:id',deleteRequestCategoryValidatore, CategoryController.getCategoryById);
+Categoryrouter.post('/categories', addRequestCategoryValidatore, CategoryController.createCategories);
 Categoryrouter.delete(
-  '/categories/:id',
+  '/categories/:id', deleteRequestCategoryValidatore,
   CategoryController.deleteCategories
 );
 Categoryrouter.put(
-  '/categories/:id',
+  '/categories/:id', updateRequestCategoryValidatore,
   CategoryController.updateCategories
 );
 
