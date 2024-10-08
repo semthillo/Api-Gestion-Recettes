@@ -168,6 +168,5 @@ docker-compose up
 
 ## Author
 
-- **GitHub** : [Ousmane Ly](https://github.com/Ousmanly)
-- **GitHub** : [Mariem Dianifaba](https://github.com/mariem2012)
+
 - **GitHub** : [Sem Thillo](https://github.com/semthillo)
