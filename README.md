@@ -35,12 +35,13 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - Assurez-vous que Mysql est en cours d'exécution sur votre machine locale.
 
 - Renommez le fichier  .env.exemple en .env et ajoutez y la configuration de votre base de données :
-  
-  DB_HOST = localhost;
-  DB_USER = root;
-  DB_PASSWORD = yourpassword;
-  DB_NAME = gestion_recettes;
 
+  ```bash 
+    DB_HOST = localhost;
+    DB_USER = root;
+    DB_PASSWORD = yourpassword;
+    DB_NAME = gestion_recettes;
+```
 - Importez La base de donnée  avec le fichier database.sql.
 
 ## Utilisation
