@@ -1,4 +1,4 @@
-# API RESTful de Gestion des Recettes
+# API RESTful de Gestion de Recettes
 
 Cette API permet de gérer une collection de recettes. Vous pouvez l'utiliser pour créer, lire, mettre à jour et supprimer des recettes.
 
@@ -15,13 +15,13 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 1. **Clonez le repository :**
 
    ```bash
-       https://github.com/Ousmanly/gestion_recette_api.git
+       https://github.com/semthillo/Api-Gestion-Recettes.git
    ```
 
 2. **Accédez au dossier du projet :**
 
    ```bash
-      cd gestion_recette_api
+      cd Api-Gestion-Recettes
    ```
 
 3. **Installez les dépendances :**
@@ -33,14 +33,15 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 4. **Configurer la base de données**
 
 - Assurez-vous que Mysql est en cours d'exécution sur votre machine locale.
-- La base de donnée exporté avec le nom database.sql.
-- Renommer le fichier  .env.exemple en .env et ajouter la configuration de votre base de données :
-  ```js
+
+- Renommez le fichier  .env.exemple en .env et ajoutez y la configuration de votre base de données :
+  
   DB_HOST = localhost;
   DB_USER = root;
   DB_PASSWORD = yourpassword;
-  DB_NAME = recipes_db;
-  ```
+  DB_NAME = gestion_recettes;
+
+- Importez La base de donnée  avec le fichier database.sql.
 
 ## Utilisation
 
@@ -139,34 +140,7 @@ Pour démarrer l'application, exécutez la commande suivante :
 npm test
 ```
 
-## Construire et lancer le conteneur Docker
-
-### Prérequis
-
-- Assurez-vous d'avoir Docker et Docker Compose installés sur votre machine.
-
-### Étapes
-
-1. **Créer le fichier `Dockerfile` :**
-   Si ce n'est pas déjà fait, créez un fichier `Dockerfile` à la racine de votre projet avec les instructions nécessaires pour construire l'image de votre application.
-
-2. **Créer le fichier `docker-compose.yml` :**
-   Si vous utilisez Docker Compose, assurez-vous d'avoir un fichier `docker-compose.yml` configuré.
-
-3. **Construire l'image Docker :**
-   À la racine de votre projet, exécutez la commande suivante pour construire l'image Docker :
-
-   ```bash
-   docker-compose build
-   ```
-
-4. **Lancer le conteneur Docker : Démarrez le conteneur en utilisant la commande :**
-
-```bash
-docker-compose up
-```
 
 ## Author
-
 
 - **GitHub** : [Sem Thillo](https://github.com/semthillo)
